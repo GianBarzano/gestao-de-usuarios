@@ -1,0 +1,18 @@
+<div class="custom-input {{customClass}}" [ngClass]="{
+  'custom-input-senha':  tipo == 'senha',
+  'ver-senha': verSenha
+}">
+  <input [type]="inputType" [placeholder]="placeholder" [(ngModel)]="valor" 
+    (keyup)="onKeyup($event)"
+    [maxlength]="maxlength"
+  >
+  <!-- Icones apresentados no caso do tipo senha-->
+  <div class="icone-container">
+    <span class="icone-olho-aberto" (click)="onIconeVerSenhaClick(true)">
+      <i class="fas fa-eye"></i>
+    </span>
+    <span class="icone-olho-fechado" (click)="onIconeVerSenhaClick(false)">
+      <i class="fas fa-eye-slash"></i>
+    </span>
+  </div>
+</div>

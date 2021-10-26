@@ -1,0 +1,142 @@
+/* Regras de estilo responsivo SCSS. */
+@import 'styles.responsivo';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: #333333;
+  font-size: 14px;
+  width: 100%;
+
+  // Variaveis
+  --cor-borda: #eeeeee;
+  --cor-borda-input: rgb(218, 218, 218);
+  --cor-1: #0071c2;
+  --cor-1-forte: #17589e;
+  --cor-1-fraca: #0078cc;
+  --cor-1-fraca-2: #f0f7fc;
+  --cor-2: #fff;
+  --cor-tela: var(--cor-2);
+}
+
+.tela {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.custom-router {
+  outline: none;
+}
+
+// Componente de loading nas telas
+.my-loading-sistema {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+
+  .fundo {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    opacity: 0.5;
+  }
+
+  .mensagem-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .mensagem {
+      border-radius: 3px;
+      padding: 15px;
+      background-color: var(--cor-1-fraca);
+      color: var(--cor-2);
+      box-shadow: 2px 2px 13px -1px rgb(0 0 0 / 66%);
+    }
+  }
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  background-color: var(--cor-1);
+  border: 1px solid var(--cor-1);
+  padding: 8px;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: var(--cor-1-forte);
+}
+
+.btn:focus {
+  border: 1px solid var(--cor-1-forte);
+}
+
+.btn.btn-disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.btn.btn-full {
+  display: block;
+}
+
+.btn.btn-light {
+  border: none;
+  background-color: transparent;
+  color: var(--cor-1-fraca);
+}
+
+.btn.btn-light:hover {
+  border: none;
+  background-color: var(--cor-1-fraca-2);
+}
+
+// Toaster
+.my-custom-toaster-list {
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 130px);
+  top: 60px;
+  width: 260px;
+  
+  .my-custom-toaster {
+    display: inline-block;
+    min-height: 50px;
+    max-width: 100%;
+    width: calc(100% - 30px);
+    border-radius: 4px;
+    padding: 15px;
+    font-weight: 600;
+    color: white;
+    box-shadow: 2px 2px 13px -5px rgb(0 0 0 / 66%);
+    text-align: center;
+    margin-top: 10px;
+  
+    &.sucesso {
+      background-color: #8bb955;
+    }
+    &.erro {
+      background-color: #ce655d;
+    }
+    &.sz-300 {
+      width: 300px;
+      left: calc(50% - 165px);
+    }
+  }
+}

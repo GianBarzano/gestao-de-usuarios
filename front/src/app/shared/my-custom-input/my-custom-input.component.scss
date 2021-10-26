@@ -1,0 +1,50 @@
+:host {
+  .custom-input {
+    border: 1px solid var(--cor-borda-input);
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 3px;
+    display: flex;
+  
+    &:focus-within {
+      border-color: var(--cor-1-fraca);
+    }
+  
+    input {
+      border: none;
+      outline: none;
+      background: transparent;
+      flex-grow: 1;
+      width: 50px;
+    }
+  
+    .icone-container {
+      display: none;
+    }
+  
+    &.custom-input-senha {
+      &.ver-senha {
+        .icone-container {
+          .icone-olho-fechado {
+            display: block;
+          }
+          .icone-olho-aberto {
+            display: none;
+          }
+        }
+      }
+      .icone-container {
+        display: block;
+        cursor: pointer;
+  
+        &:hover {
+          opacity: 0.9;
+        }
+  
+        .icone-olho-fechado {
+          display: none;
+        }
+      }
+    }
+  }
+}

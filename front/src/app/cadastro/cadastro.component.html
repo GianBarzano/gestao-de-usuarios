@@ -1,0 +1,47 @@
+<div class="tela tela-cadastro">
+  <div class="tela-container">
+    <div class="tela-secao-principal">
+      <div class="msg-bem-vindo">
+        Olá, Visitante!
+      </div>
+      <div class="logar">
+        Já possui conta?
+        <span class="logar-link custom-router" routerLink="/login">Logar</span>
+      </div>
+      <div class="dados-cadastro">
+        <!-- Nome -->
+        <my-custom-input class="nome"
+          placeholder="Nome..."
+          [maxlength]="50"
+          [valor]="dadosCadastro.nome"
+          (onChange)="onInputChange('nome', $event)">          
+        </my-custom-input>
+        <!-- E-mail -->
+        <my-custom-input class="email"
+          tipo="email"
+          [maxlength]="50"  
+          placeholder="E-mail..."
+          [valor]="dadosCadastro.email"
+          (onChange)="onInputChange('email', $event)">          
+        </my-custom-input>
+        <!-- Senha -->
+        <my-custom-input class="senha"
+          tipo="senha"
+          [maxlength]="12"  
+          placeholder="Senha..."
+          [valor]="dadosCadastro.senha"
+          (onChange)="onInputChange('senha', $event)"
+          (keydown.enter)="onCadastrarClick()">          
+        </my-custom-input>
+      </div>
+    </div>
+    <div class="tela-secao-rodape">
+      <div class="btn btn-full btn-cadastro" tabindex="0" 
+        (click)="onCadastrarClick()"
+        (keydown.space)="onCadastrarClick()"
+        (keydown.enter)="onCadastrarClick()">
+        Criar conta
+      </div>
+    </div>
+  </div>
+</div>

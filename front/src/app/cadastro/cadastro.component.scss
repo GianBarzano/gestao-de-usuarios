@@ -1,0 +1,40 @@
+:host {
+  .tela.tela-cadastro {
+    .tela-container {
+      display: flex;
+      flex-direction: column;
+
+      .tela-secao-principal {
+        flex-grow: 1;
+        margin: 30px;
+        margin-bottom: 0;
+
+        .msg-bem-vindo {
+          font-size: 22px;
+        }
+        .logar {
+          color: rgb(71 71 71);
+          margin-top: 15px;
+          
+          .logar-link {
+            color: var(--cor-1-fraca);
+            font-weight: 600;
+      
+            &:hover {
+              color: var(--cor-1-forte);
+              cursor: pointer;
+            }
+          }
+        }
+      
+        .dados-cadasto {
+          padding: 15px 0;
+        }
+        
+      }
+      .tela-secao-rodape {
+        margin: 30px;
+      }
+    }
+  }
+}

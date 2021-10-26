@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    // Barra superior da aplicação
+    .barra-superior {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 20px;
+      background-color: var(--cor-1-fraca);
+      color: var(--cor-2);
+
+      .dados-sistema {
+        cursor: pointer;
+
+        .icone-sistema, .titulo-sistema {
+          display: inline-block;
+        }
+
+        .titulo-sistema {
+          font-weight: 600;
+          margin-left: 5px;
+        }
+
+        &:hover {
+          color: var(--cor-1-forte);
+        }
+      }
+
+      .icone-logout {
+        cursor: pointer;
+      }
+      .icone-logout:hover {
+        color: var(--cor-1-forte);
+      }
+    }
+    // Conteúdo das telas
+    .conteudo-rotas {
+      height: 0;
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: var(--cor-2);
+    }
+  }
+}

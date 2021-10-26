@@ -1,0 +1,27 @@
+<div class="tela tela-inicial">
+  <div class="tela-container">
+    <div class="tela-secao-principal">
+      <div class="msg-bem-vindo">
+        <div class="ola">Olá,</div>
+        <div class="usuario-nome">{{ this.dadosUsuarioLogado?.primeironome }}!</div>
+      </div>
+      <div class="dados-pessoais custom-router" routerLink="minha-conta">
+        <div class="icone-container">
+          <div class="icone">
+            <i class="fas fa-users-cog"></i>
+          </div>
+        </div>
+        <div class="dados-container">
+          <div class="titulo">Minha conta</div>
+          <div class="descricao">Atualize as informações da sua conta.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tela-secao-rodape">
+      <div class="btn btn-full btn-deslogar" tabindex="0"
+        (click)="onDeslogarClick()">
+        Deslogar
+      </div>
+    </div>
+  </div>
+</div>

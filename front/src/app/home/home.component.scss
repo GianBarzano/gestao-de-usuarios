@@ -1,0 +1,69 @@
+:host {
+  .tela-inicial {
+    .tela-container {
+      display: flex;
+      flex-direction: column;
+
+      .tela-secao-principal{
+        flex-grow: 1;
+        margin: 30px;
+        margin-bottom: 0;
+
+        .msg-bem-vindo {
+          display: flex;
+          font-size: 22px;
+          margin-top: 15px;
+          
+          .usuario-nome{
+            margin-left: 5px;
+          }
+        }
+        
+        .dados-pessoais{
+          display: flex;
+          padding: 15px;
+          margin-top: 15px;
+          border-radius: 4px;
+          border: 1px solid var(--cor-borda);
+
+          &:hover {
+            cursor: pointer;
+            color: var(--cor-1-fraca);
+          }
+          
+          .icone-container {
+            padding: 0 10px;
+            
+            .icone {
+              display: inline-block;
+              padding: 10px;
+              background-color: rgb(240 240 240);
+              border-radius: 50%;
+              font-size: 40px;
+            }
+          }
+
+          .dados-container {
+            flex-grow: 1;
+            padding: 0 10px;
+
+            .titulo {
+              font-size: 18px;
+              font-weight: 600;
+            }
+            
+            .descricao {
+              font-size: 16px;
+              margin-top: 5px;
+            }
+          }
+          
+        }
+      }
+
+      .tela-secao-rodape {
+        margin: 30px;
+      }
+    }
+  }
+}

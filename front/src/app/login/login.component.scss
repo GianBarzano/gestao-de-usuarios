@@ -1,0 +1,97 @@
+:host {
+  .tela.tela-login {
+    .tela-container {
+      display: flex;
+      flex-direction: column;
+
+      .tela-secao-principal {
+        flex-grow: 1;
+        margin: 30px;
+        margin-bottom: 0;
+
+        .msg-bem-vindo {
+          font-size: 22px;
+        }
+        
+        .criar-conta {
+          color: rgb(71 71 71);
+          margin-top: 15px;
+      
+          .criar-conta-link {
+            color: var(--cor-1-fraca);
+            font-weight: 600;
+        
+            &:hover {
+              color: var(--cor-1-forte);
+              cursor: pointer;
+            }
+          }
+        }
+
+        .dados-login {
+          padding: 15px 0;
+      
+          .doc-login {
+            margin-top: 15px;
+      
+            &.por-email .titulos .login-titulo.titulo-email,
+            &.por-cpf .titulos .login-titulo.titulo-cpf,
+            &.por-pis .titulos .login-titulo.titulo-pis{
+              font-weight: 600;
+            }
+      
+            &.por-email .ipt-cpf,
+            &.por-email .ipt-pis{
+              display: none !important;
+            }
+      
+            &.por-cpf .ipt-email,
+            &.por-cpf .ipt-pis{
+              display: none;
+            }
+      
+            &.por-pis .ipt-email,
+            &.por-pis .ipt-cpf{
+              display: none;
+            }
+      
+            .titulos {
+              .login-titulo {
+                position: relative;
+                text-decoration: underline;
+                cursor: pointer;
+                padding: 0 10px;
+      
+                &:hover {
+                  font-weight: 600;
+                }
+            
+                &::after {
+                  content: "";
+                  display: inline-block;
+                  height: 15px;
+                  transform: rotate(20deg);
+                  width: 1px;
+                  left: 100%;
+                  top: 0;
+                  position: absolute;
+                  background: #444444;
+                }
+            
+                &:last-child {
+                  &::after {
+                    display: none;
+                  }
+                }
+              }
+            } 
+          }
+        }
+      }
+
+      .tela-secao-rodape {
+        margin: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,397 @@
+<div class="tela tela-minha-conta">
+  <div class="tela-container">
+    <div class="tela-secao-principal">
+      <div class="dados-pessoais">
+        <div class="icone-container">
+          <div class="icone">
+            <i class="fas fa-users-cog"></i>
+          </div>
+        </div>
+        <div class="dados-container">
+          <div class="titulo-container">
+            <div class="titulo">Minha conta</div>
+            <div class="btn btn-light btn-voltar custom-router"
+              routerLink="/" tabindex="0">
+              Voltar
+            </div>
+          </div>
+          <div class="descricao">Atualize as informações da sua conta.</div>
+        </div>
+      </div>
+      <!-- Seção Conta -->
+      <div class="secao-container secao-conta md-em-visualizacao">
+        <div class="secao-titulo">
+          Conta
+        </div>
+        <div class="secao-dados">
+          <!-- Dados: modo visualização -->
+          <div class="dados vw-visualizacao">
+            <div class="dado">
+              Não utiliza mais o sistema?
+            </div>
+          </div>
+          <!-- Ações: modo visualização -->
+          <div class="acoes vw-visualizacao">
+            <div class="acao btn btn-light btn-editar" tabindex="0"
+              (click)="onExcluirContaClick()">
+              Excluir conta
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Seção Nome -->
+      <div class="secao-container" id="secao-nome" [ngClass]="{
+        'md-em-visualizacao': !secaoNome.emEdicao,
+        'md-em-edicao': secaoNome.emEdicao
+      }">
+        <div class="secao-titulo">
+          Nome
+        </div>
+        <div class="secao-dados">
+          <!-- Dados: Modo de edição -->
+          <div class="dados vw-edicao">
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-valor">
+                <my-custom-input class="nome"
+                  placeholder="Digite seu nome..."
+                  [maxlength]="50"
+                  [valor]="secaoNome.novoValor.nome"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdNome, 'nome', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+          </div>
+          <!-- Dados: modo visualização -->
+          <div class="dados vw-visualizacao">
+            <div class="dado">
+              {{ usuario.nome }}
+            </div>
+          </div>
+          <!-- Ações: Modo de edição -->
+          <div class="acoes vw-edicao">
+            <div class="acao btn btn-light btn-cancelar" tabindex="0"
+              (click)="onSecaoCancelarClick(ESecaoDados.sdNome)">
+              Cancelar
+            </div>
+            <div class="acao btn btn-salvar" tabindex="0"
+              (click)="onSecaoNomeSalvarClick()">
+              Salvar
+            </div>
+          </div>
+          <!-- Ações: modo visualização -->
+          <div class="acoes vw-visualizacao">
+            <div class="acao btn btn-light btn-editar" tabindex="0"
+              (click)="onSecaoEditarClick(ESecaoDados.sdNome)">Editar</div>
+          </div>
+        </div>
+      </div>
+      <!-- Seção E-mail -->
+      <div class="secao-container" id="secao-email" [ngClass]="{
+        'md-em-visualizacao': !secaoEmail.emEdicao,
+        'md-em-edicao': secaoEmail.emEdicao
+      }">
+        <div class="secao-titulo">
+          E-mail
+        </div>
+        <div class="secao-dados">
+          <!-- Dados: Modo de edição -->
+          <div class="dados vw-edicao">
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-valor">
+                <my-custom-input class="email"
+                  tipo="email"
+                  placeholder="Digite seu e-mail..."
+                  [maxlength]="50"
+                  [valor]="secaoEmail.novoValor.email"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdEmail, 'email', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+          </div>
+          <!-- Dados: modo visualização -->
+          <div class="dados vw-visualizacao">
+            <div class="dado">
+              {{ usuario.email }}
+            </div>
+          </div>
+          <!-- Ações: Modo de edição -->
+          <div class="acoes vw-edicao">
+            <div class="acao btn btn-light btn-cancelar" tabindex="0"
+              (click)="onSecaoCancelarClick(ESecaoDados.sdEmail)">Cancelar</div>
+            <div class="acao btn btn-salvar" tabindex="0"
+              (click)="onSecaoEmailSalvarClick()">
+              Salvar
+            </div>
+          </div>
+          <!-- Ações: modo visualização -->
+          <div class="acoes vw-visualizacao">
+            <div class="acao btn btn-light btn-editar" tabindex="0"
+              (click)="onSecaoEditarClick(ESecaoDados.sdEmail)">Editar</div>
+          </div>
+        </div>
+      </div>
+      <!-- Seção Senha -->
+      <div class="secao-container" id="secao-senha" [ngClass]="{
+        'md-em-visualizacao': !secaoSenha.emEdicao,
+        'md-em-edicao': secaoSenha.emEdicao
+      }">
+        <div class="secao-titulo">
+          Senha
+        </div>
+        <div class="secao-dados">
+          <!-- Dados: Modo de edição -->
+          <div class="dados vw-edicao">
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Nova senha</div>
+              <div class="dado-valor">
+                <my-custom-input class="senha"
+                  tipo="senha"
+                  placeholder="Digite sua nova senha..."
+                  [maxlength]="12"
+                  [valor]="secaoSenha.novoValor.senha"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdSenha, 'senha', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Senha atual</div>
+              <div class="dado-valor">
+                <my-custom-input class="senha-atual"
+                  tipo="senha"
+                  placeholder="Confirme sua senha atual..."
+                  [maxlength]="12"
+                  [valor]="secaoSenha.novoValor.senhaatual"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdSenha, 'senhaatual', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+          </div>
+          <!-- Dados: modo visualização -->
+          <div class="dados vw-visualizacao">
+            <div class="dado">
+              Altere sua senha de acesso
+            </div>
+          </div>
+          <!-- Ações: Modo de edição -->
+          <div class="acoes vw-edicao">
+            <div class="acao btn btn-light btn-cancelar" tabindex="0"
+             (click)="onSecaoCancelarClick(ESecaoDados.sdSenha)">Cancelar</div>
+            <div class="acao btn btn-salvar" tabindex="0"
+              (click)="onSecaoSenhaSalvarClick()">
+              Salvar
+            </div>
+          </div>
+          <!-- Ações: modo visualização -->
+          <div class="acoes vw-visualizacao">
+            <div class="acao btn btn-light btn-editar" tabindex="0"
+              (click)="onSecaoEditarClick(ESecaoDados.sdSenha)">Editar</div>
+          </div>
+        </div>
+      </div>
+      <!-- Seção Documentos de Identificação -->
+      <div class="secao-container" id="secao-doc-id" [ngClass]="{
+        'md-em-visualizacao': !secaoDocIdenticacao.emEdicao,
+        'md-em-edicao': secaoDocIdenticacao.emEdicao
+      }">
+        <div class="secao-titulo">
+          Documentos de identificação
+        </div>
+        <div class="secao-dados">
+          <!-- Dados: Modo de edição -->
+          <div class="dados vw-edicao">
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">CPF</div>
+              <div class="dado-valor">
+                <my-custom-input class="cpf"
+                  tipo="texto-numerico"
+                  [maxlength]="11"
+                  placeholder="Digite seu CPF..."
+                  [valor]="secaoDocIdenticacao.novoValor.cpf"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdDocId, 'cpf', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">PIS</div>
+              <div class="dado-valor">
+                <div class="custom-input pis">
+                  <my-custom-input class="pis"
+                    tipo="texto-numerico"
+                    [maxlength]="11"
+                    placeholder="Digite seu PIS..."
+                    [valor]="secaoDocIdenticacao.novoValor.pis"
+                    (onChange)="onSecaoInputChange(ESecaoDados.sdDocId, 'pis', $event)">          
+                  </my-custom-input>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Dados: modo visualização -->
+          <div class="dados vw-visualizacao">
+            <!-- CPF -->
+            <div class="dado">
+              <div class="dado-titulo">CPF</div>
+              <div class="dado-valor">
+                {{ formataCPF(usuario.cpf) }}
+              </div>
+            </div>
+            <!-- PIS -->
+            <div class="dado">
+              <div class="dado-titulo">PIS</div>
+              <div class="dado-valor">
+                {{ formataPIS(usuario.pis) }}
+              </div>
+            </div>
+          </div>
+          <!-- Ações: Modo de edição -->
+          <div class="acoes vw-edicao">
+            <div class="acao btn btn-light btn-cancelar" tabindex="0"
+            (click)="onSecaoCancelarClick(ESecaoDados.sdDocId)">Cancelar</div>
+            <div class="acao btn btn-salvar" tabindex="0"
+              (click)="onSecaoDocIdSalvarClick()">
+              Salvar
+            </div>
+          </div>
+          <!-- Ações: modo visualização -->
+          <div class="acoes vw-visualizacao">
+            <div class="acao btn btn-light btn-editar" tabindex="0"
+              (click)="onSecaoEditarClick(ESecaoDados.sdDocId)">Editar</div>
+          </div>
+        </div>
+      </div>
+      <!-- Seção Endereço -->
+      <div class="secao-container" id="secao-endereco" [ngClass]="{
+        'md-em-visualizacao': !secaoEndereco.emEdicao,
+        'md-em-edicao': secaoEndereco.emEdicao
+      }">
+        <div class="secao-titulo">
+          Endereço
+        </div>
+        <div class="secao-dados">
+          <!-- Dados: Modo de edição -->
+          <div class="dados vw-edicao">
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">País</div>
+              <div class="dado-valor">
+                <my-custom-input class="pais"
+                  [maxlength]="50"
+                  placeholder="Brasil, Uruguai, Argentina..."
+                  [valor]="secaoEndereco.novoValor.pais"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'pais', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="linha-dados">
+              <!-- Dados inline -->
+              <div class="dado flex-1">
+                <div class="dado-titulo">Município</div>
+                <div class="dado-valor">
+                  <my-custom-input class="municipio"
+                    [maxlength]="50"
+                    placeholder="Rio de Janeiro, Itaguaí..."
+                    [valor]="secaoEndereco.novoValor.municipio"
+                    (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'municipio', $event)">          
+                  </my-custom-input>
+                </div>
+              </div>
+              <!-- Dados inline -->
+              <div class="dado">
+                <div class="dado-titulo">UF</div>
+                <div class="dado-valor">
+                  <my-custom-input class="estado"
+                    placeholder="RJ, MA..."
+                    [maxlength]="2"
+                    [valor]="secaoEndereco.novoValor.estado"
+                    (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'estado', $event)">          
+                  </my-custom-input>
+                </div>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">CEP</div>
+              <div class="dado-valor">
+                <my-custom-input class="cep"
+                  tipo="texto-numerico"
+                  [maxlength]="8"
+                  placeholder="Digite o seu CEP..."
+                  [valor]="secaoEndereco.novoValor.cep"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'cep', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="linha-dados">
+              <!-- Dados inline -->
+              <div class="dado flex-1">
+                <div class="dado-titulo">Rua</div>
+                <div class="dado-valor">
+                  <my-custom-input class="rua"
+                    [maxlength]="50"
+                    placeholder="Rua 9, Av. Brasil, Praça XV..."
+                    [valor]="secaoEndereco.novoValor.rua"
+                    (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'rua', $event)">          
+                  </my-custom-input>
+                </div>
+              </div>
+              <!-- Dados inline -->
+              <div class="dado">
+                <div class="dado-titulo">Nº</div>
+                <div class="dado-valor">
+                  <my-custom-input class="numero"
+                    placeholder="7, s/nº..."
+                    [maxlength]="20"
+                    [valor]="secaoEndereco.novoValor.numero"
+                    (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'numero', $event)">          
+                  </my-custom-input>
+                </div>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Complemento</div>
+              <div class="dado-valor">
+                <my-custom-input class="complemento"
+                  [maxlength]="50"
+                  placeholder="BL 4 APT 206, Casa dos fundos..."
+                  [valor]="secaoEndereco.novoValor.complemento"
+                  (onChange)="onSecaoInputChange(ESecaoDados.sdEndereco, 'complemento', $event)">          
+                </my-custom-input>
+              </div>
+            </div>
+          </div>
+          <!-- Dados: modo visualização -->
+          <div class="dados vw-visualizacao">
+            <div class="dado">
+              <div class="dado-valor">
+                {{ getEnderecoFormatado() }}
+              </div>
+            </div>
+          </div>
+          <!-- Ações: Modo de edição -->
+          <div class="acoes vw-edicao">
+            <div class="acao btn btn-light btn-cancelar" tabindex="0"
+              (click)="onSecaoCancelarClick(ESecaoDados.sdEndereco)">Cancelar</div>
+            <div class="acao btn btn-salvar" tabindex="0"
+              (click)="onSecaoEnderecoSalvarClick()">
+              Salvar
+            </div>
+          </div>
+          <!-- Ações: modo visualização -->
+          <div class="acoes vw-visualizacao">
+            <div class="acao btn btn-light btn-editar" tabindex="0"
+              (click)="onSecaoEditarClick(ESecaoDados.sdEndereco)">Editar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

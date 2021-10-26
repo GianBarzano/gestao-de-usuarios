@@ -1,0 +1,36 @@
+<div class="content" role="main">
+  <!-- Barra superior -->
+  <div class="barra-superior">
+    <div class="dados-sistema custom-router" routerLink="/">
+      <div class="icone-sistema">
+        <i class="fas fa-users-cog"></i>
+      </div>
+      <div class="titulo-sistema">{{ tituloTela }}</div>
+    </div>
+    <div class="icone-logout" 
+      (click)="onDeslogarClick()"
+      *ngIf="usuarioLogado()">
+      <i class="fas fa-sign-out-alt"></i>
+    </div>
+  </div>
+  <div class="conteudo-rotas" *ngIf="iniciado">
+      <router-outlet></router-outlet>
+  </div>
+  <!-- Toaster -->
+  <div class="my-custom-toaster-list">
+    <div class="my-custom-toaster" [ngClass]="{
+      'sucesso': toaster.tipo == 'sucesso',
+      'erro': toaster.tipo == 'erro'
+    }"
+      *ngFor="let toaster of arrToasters">
+      <div class="mensagem">{{ toaster.mensagem }}</div>
+    </div>
+  </div>
+  <!-- Loading -->
+  <div class="my-loading-sistema" *ngIf="loadingConfig.ativo">
+    <div class="fundo"></div>
+    <div class="mensagem-container">
+      <div class="mensagem">{{ loadingConfig.mensagem }}</div>
+    </div>
+  </div>
+</div>

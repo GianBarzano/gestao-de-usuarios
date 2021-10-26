@@ -1,0 +1,69 @@
+<div class="tela tela-login">
+  <div class="tela-container">
+    <div class="tela-secao-principal">
+      <div class="msg-bem-vindo">
+        Olá, Visitante!
+      </div>
+      <div class="criar-conta">
+        Novo por aqui?
+        <span class="criar-conta-link custom-router" routerLink="/cadastro">Criar conta</span>
+      </div>
+      <div class="dados-login">
+        <!-- Login -->
+        <div class="doc-login" [ngClass]="{
+          'por-email': tipoLogin == ETipoLogin.tlPorEmail,
+          'por-cpf': tipoLogin == ETipoLogin.tlPorCpf,
+          'por-pis': tipoLogin == ETipoLogin.tlPorPis
+        }">
+          <!-- Label de título -->
+          <div class="titulos">
+            <span class="titulo-logar">Logar com: </span>
+            <span class="login-titulo titulo-email" (click)="onTituloTipoLoginClick(ETipoLogin.tlPorEmail)">E-mail</span>
+            <span class="login-titulo titulo-cpf" (click)="onTituloTipoLoginClick(ETipoLogin.tlPorCpf)">CPF</span>
+            <span class="login-titulo titulo-pis" (click)="onTituloTipoLoginClick(ETipoLogin.tlPorPis)">PIS/PASEP</span>
+          </div>
+          <!-- E-mail -->
+          <my-custom-input class="ipt-email"
+            tipo="email"
+            [maxlength]="50"  
+            placeholder="Digite seu e-mail..."
+            [valor]="dadosLogin.email"
+            (onChange)="onInputChange('email', $event)">          
+          </my-custom-input>
+          <!-- CPF -->
+          <my-custom-input class="ipt-cpf"
+            tipo="texto-numerico"
+            [maxlength]="11"
+            placeholder="Digite seu cpf..."
+            [valor]="dadosLogin.cpf"
+            (onChange)="onInputChange('cpf', $event)">          
+          </my-custom-input>
+          <!-- CPF -->
+          <my-custom-input class="ipt-pis"
+            tipo="texto-numerico"
+            [maxlength]="11"
+            placeholder="Digite seu pis/pasep..."
+            [valor]="dadosLogin.pis"
+            (onChange)="onInputChange('pis', $event)">          
+          </my-custom-input>
+        </div>
+        <!-- Senha -->
+        <my-custom-input class="senha"
+          tipo="senha"
+          [maxlength]="12"  
+          placeholder="Digite sua senha..."
+          [valor]="dadosLogin.senha"
+          (onChange)="onInputChange('senha', $event)"
+          (keydown.enter)="onLogarClick()">          
+        </my-custom-input>
+      </div>
+    </div>
+    <div class="tela-secao-rodape">
+      <div class="btn btn-full btn-logar" tabindex="0" (click)="onLogarClick()"
+        (keydown.space)="onLogarClick()"
+        (keydown.enter)="onLogarClick()">
+        Logar
+      </div>
+    </div>
+  </div>
+</div>
