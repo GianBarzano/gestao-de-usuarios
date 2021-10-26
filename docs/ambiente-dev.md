@@ -11,6 +11,9 @@ O ambiente de desenvolvimento foi configurado com **Docker**, utilizando o arqui
     - Subir aplicação back-end e banco de dados, que está listado como uma dependencia. 
     - Crie o arquivo **common.env** na pasta "./back", copiando o arquivo de exemplo **common.env.dist**. As variáveis de banco de dados já estão configuradas para o banco levantado pelo container definido no docker-compose.
     - Ainda no arquivo **common.env** criado, preencha as variáveis referentes ao seu projeto no **Firebase**.
+    - Instale as dependências:
+    - Rode:
+    ``` $ docker-compose run back yarn ```    
     - Rode: 
   ``` $ docker-compose up -d back ```
     - Esse comando levanta o serviço "back" definido no docker-compose, sem prender o terminal.
@@ -27,6 +30,9 @@ O ambiente de desenvolvimento foi configurado com **Docker**, utilizando o arqui
 
   - ### Aplicação front-end
     - Com o servidor do back-end configurado e levantado, agora podemos configurar o front-end do projeto.
+    - Instale as dependências:
+    - Rode:
+    ``` $ docker-compose run front yarn ```    
     - Crie o arquivo **env-config.json** na pasta "./front/src/environments", copiando o arquivo de exemplo **env-config.dist.json**. A propriedade "host_api" indica o endereço do servidor. Neste caso, o endereço do servidor local que você levantou, disponível em "http://localhost:3333/".
     - Ainda no arquivo **env-config.json** criado, preencha as variáveis referentes ao seu projeto no **Firebase**.
     - Rode: 
