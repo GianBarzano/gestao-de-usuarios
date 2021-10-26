@@ -30,18 +30,18 @@ jobs:
       # Instalação de dependencias
       - name: Dependencias
         run: |
-          cd back2
+          cd back
           yarn install
 
       # Testes unitários
       - name: Testes unitários
         run: |
-          (cd back2 && yarn run test)
+          (cd back && yarn run test)
 
       # Realiza build da aplicação na pasta dist
       - name: Build
         run: |
-          cd back2
+          cd back
           yarn run build:prod
 
       # Realiza deploy da aplicação no Heroku
@@ -51,4 +51,4 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "gestao-de-usuarios"
           heroku_email: "gianbarzano@gmail.com"
-          appdir: back2
+          appdir: back
