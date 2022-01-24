@@ -1,0 +1,80 @@
+<div class="tela tela-meus-pets-edit">
+  <div class="tela-container">
+    <div class="tela-secao-principal">
+      <div class="dados-pessoais">
+        <div class="icone-container">
+          <div class="icone">
+            <i class="fas fa-paw"></i>
+          </div>
+        </div>
+        <div class="dados-container">
+          <div class="titulo-container">
+            <div class="titulo">Edição de pet</div>
+            <div class="btn btn-light btn-voltar custom-router"
+              routerLink="/" tabindex="0">
+              Voltar
+            </div>
+          </div>
+          <div class="descricao">Gerencie seus pets para adoção.</div>
+        </div>
+      </div>
+      <div class="secao-container">
+        <div class="secao-dados">
+          <div class="dados vw-edicao">
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Nome</div>
+              <div class="dado-valor">
+                <my-custom-input class="nome"
+                  [maxlength]="50"
+                  placeholder="Pipoca, Estrela, Amora...">
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Raça</div>
+              <div class="dado-valor">
+                <my-custom-input class="raca"
+                  [maxlength]="50"
+                  placeholder="SRD, Pincher, Pit Bull...">
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Porte</div>
+              <div class="dado-valor">
+                <my-custom-input class="porte"
+                  tipo="texto-numerico"
+                  [maxlength]="8"
+                  placeholder="Pequeno, Médio, Grande...">          
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Espécie</div>
+              <div class="dado-valor">
+                <my-custom-input class="especie"
+                  [maxlength]="50"
+                  placeholder="Canina, Felina...">
+                </my-custom-input>
+              </div>
+            </div>
+            <!-- Linha de dados -->
+            <div class="dado">
+              <div class="dado-titulo">Gênero</div>
+              <div class="dado-valor">
+                <my-custom-input class="genero"
+                  [maxlength]="50"
+                  placeholder="Macho, Fêmea...">
+                </my-custom-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

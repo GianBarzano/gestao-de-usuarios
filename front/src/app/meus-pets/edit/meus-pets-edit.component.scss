@@ -1,0 +1,130 @@
+:host {
+  .tela-meus-pets-edit {
+    .tela-container {
+      display: flex;
+      flex-direction: column;
+      max-height: none;
+
+      .tela-secao-principal{
+        flex-grow: 1;
+        margin: 30px 0;
+
+        .dados-pessoais {
+          display: flex;
+          padding: 15px;
+          border-bottom: 1px solid var(--cor-borda);
+          padding-right: 10px;
+
+          .icone-container {
+            padding: 0 10px;
+
+            .icone {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 50px;
+              height: 50px;
+              padding: 10px;
+              background-color: rgb(240 240 240);
+              border-radius: 50%;
+              font-size: 40px;
+            }
+          }
+          
+          .dados-container {
+            flex-grow: 1;
+            padding: 0 10px;
+            padding-right: 0;
+            
+            .titulo-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .titulo {
+                font-size: 18px;
+                font-weight: 600;
+              }
+            }
+            
+            .descricao {
+              font-size: 16px;
+              margin-top: 5px;
+            }
+          } 
+        }
+
+        .lista {
+          &__item {
+            cursor: pointer;
+          }
+        }
+      }
+      
+      
+      /* DADOS ANTERIORES */
+      .secao-container {
+        border-bottom: 1px solid var(--cor-borda);
+      }
+      
+      .secao-container .secao-titulo {
+        padding: 10px;
+        font-size: 16px;
+      }
+      
+      .secao-container .secao-dados {
+        display: flex;
+        align-items: center;
+      }
+      
+      .secao-container.md-em-edicao .secao-dados{
+        display: block;
+      }
+      
+      .secao-container.md-em-edicao .vw-visualizacao{
+        display: none;
+      }
+      
+      .secao-container.md-em-visualizacao .vw-edicao {
+        display: none;
+      }
+      
+      .secao-dados .dados {
+        padding: 10px 5px;
+        flex-grow: 1;
+      }
+      
+      .secao-dados .dados .dado {
+        padding: 5px;
+      }
+      
+      .secao-dados .dados .dado .dado-titulo {
+        margin-bottom: 5px;
+        font-size: 12px;
+      }
+      
+      .secao-dados .dados .linha-dados {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      .secao-dados .dados .linha-dados .dado.flex-1{
+        flex-grow: 1;
+      }
+      
+      .secao-dados .acoes {
+        display: flex;
+        justify-content: flex-end;
+        padding: 5px;
+      }
+      
+      .secao-dados .acoes .acao{
+        margin: 5px;
+      }
+      
+      .custom-input {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -28,6 +28,11 @@ const routes: Routes = [
     component: MinhaContaComponent,
     canActivate: [LogadoGuard]
   },
+  {
+    path: 'meus-pets',
+    loadChildren: () =>
+      import('./meus-pets/meus-pets.module').then((m) => m.MeusPetsModule),
+  },
   { 
     path: '**', 
     redirectTo: 'minha-conta',

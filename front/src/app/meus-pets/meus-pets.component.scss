@@ -1,0 +1,124 @@
+:host {
+  .tela-meus-pets {
+    .tela-container {
+      display: flex;
+      flex-direction: column;
+      max-height: none;
+
+      .tela-secao-principal{
+        flex-grow: 1;
+        margin: 30px 0;
+
+        .dados-pessoais {
+          display: flex;
+          padding: 15px;
+          border-bottom: 1px solid var(--cor-borda);
+          padding-right: 10px;
+
+          .icone-container {
+            padding: 0 10px;
+
+            .icone {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 50px;
+              height: 50px;
+              padding: 10px;
+              background-color: rgb(240 240 240);
+              border-radius: 50%;
+              font-size: 40px;
+            }
+          }
+          
+          .dados-container {
+            flex-grow: 1;
+            padding: 0 10px;
+            padding-right: 0;
+            
+            .titulo-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .titulo {
+                font-size: 18px;
+                font-weight: 600;
+              }
+            }
+            
+            .descricao {
+              font-size: 16px;
+              margin-top: 5px;
+            }
+          } 
+        }
+
+        .lista {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          &__item {
+            cursor: pointer;
+            box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px;
+
+            .fotos {
+              position: relative;
+              height: 125px;
+              width: 140px;
+
+              img {
+                width: 100%;
+                height: 100%;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+              }
+
+              .distancia-container {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                top: calc(100% - 30px);
+                height: 30px;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+
+                .distancia {
+                  background-color: white;
+                  border-radius: 2px;
+                  padding: 2px 3px;
+                  font-weight: bold;
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      .custom-input {
+        margin: 0;
+      }
+    }
+
+    @media (min-width: 500px) {
+      .tela-container {
+        .tela-secao-principal {
+          .lista {
+            &__item {
+              .fotos {
+                height: 160px;
+                width: 200px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
