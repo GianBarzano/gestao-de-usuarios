@@ -1,4 +1,4 @@
-<div class="tela tela-meus-pets">
+<div class="tela tela-buscar-pets">
   <div class="tela-container">
     <div class="tela-secao-principal">
       <div class="dados-pessoais">
@@ -9,13 +9,23 @@
         </div>
         <div class="dados-container">
           <div class="titulo-container">
-            <div class="titulo">Meus pets</div>
+            <div class="titulo">Pets para adoção</div>
             <div class="btn btn-light btn-voltar custom-router"
-              routerLink="/" tabindex="0">
+              tabindex="0" routerLink="/login">
               Voltar
             </div>
           </div>
-          <div class="descricao">Gerencie seus pets para adoção.</div>
+          <div class="descricao-container">
+            <div class="descricao">Busque pets para adoção</div>
+            <div class="btn btn-filtros"
+              tabindex="0"
+              (click)="onBtnFiltroClick()">
+              <span class="icone">
+                <i class="fas fa-filter"></i>
+              </span>
+              <span class="texto">Filtros</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="lista">

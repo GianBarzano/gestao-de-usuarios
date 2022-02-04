@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MyCustomLoadingService } from '../shared/my-custom-loading/my-custom-loading.service';
 import { MyCustomToasterService } from '../shared/my-custom-toaster/my-custom-toaster.service';
-import { EPetSexo } from './meus-pets';
-import { MeusPetsService } from './meus-pets.service';
+import { EPetSexo } from './buscar-pets';
+import { BuscarPetsService } from './buscar-pets.service';
 
 @Component({
-  selector: 'app-meus-pets',
-  templateUrl: './meus-pets.component.html',
-  styleUrls: ['./meus-pets.component.scss']
+  selector: 'app-buscar-pets',
+  templateUrl: './buscar-pets.component.html',
+  styleUrls: ['./buscar-pets.component.scss']
 })
-export class MeusPetsComponent implements OnInit {
+export class BuscarPetsComponent implements OnInit {
   listaPets: any = {
     lista: [],
     page: 1,
@@ -18,7 +18,7 @@ export class MeusPetsComponent implements OnInit {
   EPetSexo = EPetSexo;
   
   constructor(
-    private service: MeusPetsService,
+    private service: BuscarPetsService,
     private toaster: MyCustomToasterService,
     private loading: MyCustomLoadingService
   ) { }
@@ -48,5 +48,9 @@ export class MeusPetsComponent implements OnInit {
         // Desativo loading
         this.loading.fechar();
       })
+  }
+
+  onBtnFiltroClick(){
+    console.log("Btn de filtro clicado");
   }
 }

@@ -1,0 +1,14 @@
+.flex-h, .flex-v {
+  display: flex;
+}
+.flex-h {
+  &.center-h {
+    align-items: center;
+  }
+}
+.flex-v {
+  flex-direction: column;
+}
+.flex-item-1 {
+  flex: 1;
+}

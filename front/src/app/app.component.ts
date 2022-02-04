@@ -10,7 +10,7 @@ import { IMyCustomToasterConfig, MyCustomToasterService } from './shared/my-cust
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  tituloTela = 'Gestão usuários';
+  tituloTela = 'Adoção de Pets';
   iniciado: boolean = false;
   arrToasters: IMyCustomToasterConfig[] = [];
   loadingConfig: IMyCustomLoadingConfig = {

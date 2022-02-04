@@ -30,8 +30,15 @@ const routes: Routes = [
   },
   {
     path: 'meus-pets',
+    canActivate: [LogadoGuard],
     loadChildren: () =>
       import('./meus-pets/meus-pets.module').then((m) => m.MeusPetsModule),
+  },
+  {
+    path: 'buscar-pets',
+    canActivate: [DeslogadoGuard],
+    loadChildren: () =>
+      import('./buscar-pets/buscar-pets.module').then((m) => m.BuscarPetsModule),
   },
   { 
     path: '**', 

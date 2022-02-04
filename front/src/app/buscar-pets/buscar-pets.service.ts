@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../core/api/api.service';
 
 @Injectable()
-export class MeusPetsService {
+export class BuscarPetsService {
 
   constructor(
     private api: ApiService
@@ -13,7 +13,7 @@ export class MeusPetsService {
    */
   listar(): Promise<any>{
     return new Promise((res, rej) => {
-      this.api.get(`meus-pets`)
+      this.api.get(`pets`)
         .then((retorno) => {
           res(retorno)
         })

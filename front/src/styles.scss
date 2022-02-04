@@ -1,5 +1,6 @@
 /* Regras de estilo responsivo SCSS. */
 @import 'styles.responsivo';
+@import 'styles/auxiliares';
 
 body {
   margin: 0;
@@ -140,3 +141,7 @@ body {
     }
   }
 }
+
+// Auxiliares
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

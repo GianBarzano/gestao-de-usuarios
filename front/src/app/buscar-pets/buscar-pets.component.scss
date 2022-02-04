@@ -1,5 +1,5 @@
 :host {
-  .tela-meus-pets {
+  .tela-buscar-pets {
     .tela-container {
       display: flex;
       flex-direction: column;
@@ -40,17 +40,32 @@
               display: flex;
               justify-content: space-between;
               align-items: center;
+              margin-bottom: 5px;
 
               .titulo {
                 font-size: 18px;
                 font-weight: 600;
               }
             }
-            
-            .descricao {
-              font-size: 16px;
-              margin-top: 5px;
+
+            .descricao-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .descricao {
+                font-size: 16px;
+                margin-top: 5px;
+              }
+
+              .btn-filtros {
+                .icone {
+                  margin-right: 5px;
+                  font-size: 13px;
+                }
+              }
             }
+            
           } 
         }
 

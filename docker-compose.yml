@@ -30,7 +30,7 @@ services:
     image: node:12.18-alpine
     command: yarn run start
     ports:
-      - 4200:4200
+      - 4300:4200
       - 9876:9876
     working_dir: /usr/app/
     volumes:

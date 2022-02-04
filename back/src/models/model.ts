@@ -13,6 +13,12 @@ export interface IModelCriarConfig extends IModelConfig {
     params: IModelColunaValor[];
 }
 
+export interface IModelListarConfig extends IModelConfig {
+    limite: number;
+    colunas: string[];
+    where: IModelColunaValor[];
+}
+
 export interface IModelBuscarConfig extends IModelConfig {
     colunas: string[];
     where: IModelColunaValor[];
@@ -206,6 +212,56 @@ class Model {
                         res(null);
                     } else {
                         res(retorno.rows[0]);
+                    }
+                } catch (error) {
+                    rej(error);
+                } finally {
+                    bancoDados.releaseClient();
+                }
+            } catch (error) {
+                rej(error);
+            }
+        });
+    }
+    /**
+     * Busca um registro do banco de dados
+     * @param config 
+     */
+    listar(config: IModelListarConfig): Promise<any>{
+        return new Promise(async (res, rej) => {
+            try {
+                // Crio conexão
+                const client = await bancoDados.getClient();
+
+                try {
+                    let where_string = '';
+                    let params_values: any[] = [];
+
+                    config.where.forEach((param, index) => {
+                        if (index > 0) {
+                            where_string += ', ';
+                        }
+
+                        where_string += `${param.coluna} = $${index + 1}`;
+                        params_values.push(param.valor);
+                    })
+
+                    // Monto sql
+                    let sql = '';
+                    sql += `select ${config.colunas.toString()} `;
+                    sql += `from ${config.tabela} `;
+                    sql += `where ${where_string} `;
+                    if (config.limite > 0) {
+                        sql += `limit ${config.limite}`;
+                    }
+                    sql += ';'
+
+                    const retorno = await client.query(sql, params_values);
+                    console.log("Retorno", retorno);
+                    if (retorno.rowCount == 0) {
+                        res([]);
+                    } else {
+                        res(retorno.rows);
                     }
                 } catch (error) {
                     rej(error);
