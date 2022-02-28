@@ -199,16 +199,68 @@ class PetModel {
                 if (!listaBD) {
                     res(null);
                 } else {
-                    // const usuario: IUsuario = {
-                    //     id: usuarioBD.id,
-                    //     nome: usuarioBD.nome,
-                    //     email: usuarioBD.email,
-                    //     senha: usuarioBD.senha,
-                    //     cpf: usuarioBD.cpf,
-                    //     pis: usuarioBD.pis,
-                    //     id_endereco: usuarioBD.id_endereco
-                    // }
-                    res(listaBD);
+                    // res(listaBD);
+                    const arrMockImagens = [
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAJtSSphoO1_udb2dMcfRksIILD1yAaBprkw&usqp=CAU',
+                        'https://www.dogchoni.com.br/assets/uploads/blog/desvende-qual-o-porte-do-seu-cao-srd.png',
+                        'https://img.clasf.com.br/2020/04/21/doao-de-cachorro-srd-vacinado-e-vermifugado-20200421080653.0987530015.jpg',
+                        'https://www.petlove.com.br/images/breeds/192401/profile/original/srd-p.jpg?1532539578',
+                        'https://www.amoviralata.com/wp-content/uploads/2021/01/vira-lata-sem-raca-definida.jpg'
+                    ];
+                    // 1 - porte pequeno, 2 - porte medio, 3 - porte grande
+                    // 1 - Macho, 2 - Fêmea
+                    // 1 - Canina, 2 - Felina
+                    let listaPets: any = {
+                        page: 1,
+                        pages: 10,
+                        lista: []
+                    };
+                    listaPets.lista.push({
+                        img: arrMockImagens[0],
+                        nome: 'Gamora',
+                        porte: 2,
+                        nascimento: '2018-11-12',
+                        raca: 'SRD',
+                        sexo: 2,
+                        especie: 1
+                    });
+                        listaPets.lista.push({
+                        img: arrMockImagens[1],
+                        nome: 'Pitoco',
+                        porte: 2,
+                        nascimento: '2021-10-22',
+                        raca: 'SRD',
+                        sexo: 1,
+                        especie: 1
+                    });
+                    listaPets.lista.push({
+                        img: arrMockImagens[2],
+                        nome: 'Estrela',
+                        porte: 1,
+                        nascimento: '2015-01-25',
+                        raca: 'SRD',
+                        sexo: 2,
+                        especie: 1
+                    });
+                    listaPets.lista.push({
+                        img: arrMockImagens[3],
+                        nome: 'Sebastião',
+                        porte: 2,
+                        nascimento: '2022-01-01',
+                        raca: 'SRD',
+                        sexo: 1,
+                        especie: 1
+                    });
+                    listaPets.lista.push({
+                        img: arrMockImagens[4],
+                        nome: 'Amendoin',
+                        porte: 2,
+                        nascimento: '2018-11-12',
+                        raca: 'SRD',
+                        sexo: 1,
+                        especie: 1
+                    });
+                    res(listaPets);
                 }
             }).catch((err) => {
                 rej(err);

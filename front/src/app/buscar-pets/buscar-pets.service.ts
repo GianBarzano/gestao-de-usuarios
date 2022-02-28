@@ -129,6 +129,7 @@ export class BuscarPetsService {
     return listaPets;
   }
 }
+
 class DataDiff {
   static getData(data: Date | string): Date {
     if (typeof data == 'string') {

@@ -55,7 +55,7 @@ class PetController {
     }
 
     /**
-     * Realiza busca de um usuário
+     * Realiza busca de um pet
      * @param req 
      * @param res 
      */
@@ -99,7 +99,7 @@ class PetController {
     }
 
     /**
-     * Realiza atualização do usuário
+     * Realiza atualização do pet
      * @param req 
      * @param res 
      */
@@ -544,7 +544,7 @@ class PetController {
     }
 
     /**
-     * Realiza cadastro do usuário
+     * Realiza cadastro do pet
      * @param req 
      * @param res 
      */
@@ -610,92 +610,7 @@ class PetController {
     }
 
     /**
-     * Realiza login do usuário
-     * @param req 
-     * @param res 
-     */
-    public async logar(req: Request, res: Response) {
-        try {
-            // Pego dados da requisição
-            const {tipo, cpf, pis, senha} = req.body;
-            
-            let usuario: IUsuario = null;
-            
-            if (!senha) {
-                return res.status(400).send({
-                    message: 'Senha não preenchida.'
-                });
-            }
-
-            if (tipo == 'cpf') {
-                if (!cpf) {
-                    return res.status(400).send({
-                        message: 'CPF não preenchido.'
-                    });
-                }
-
-                if (!validarCPF(cpf)) {
-                    return res.status(400).send({
-                        message: 'CPF inválido.'
-                    });
-                }
-
-                usuario = await usuarioModel.buscarPorCpf(cpf);
-
-                if (!usuario) {
-                    return res.status(400).send({
-                        message: 'CPF não encontrado.'
-                    });
-                }
-            } else if (tipo == 'pis') {
-                if (!pis) {
-                    return res.status(400).send({
-                        message: 'PIS não preenchido.'
-                    });
-                }
-
-                if (!validarPIS(pis)) {
-                    return res.status(400).send({
-                        message: 'PIS inválido.'
-                    });
-                }
-
-                usuario = await usuarioModel.buscarPorPis(pis);
-
-                if (!usuario) {
-                    return res.status(400).send({
-                        message: 'PIS não encontrado.'
-                    });
-                }
-            } else {
-                return res.status(400).send({
-                    message: 'Tipo de login inválido.'
-                });
-            }
-
-            // Valido password
-            if (!await bcrypt.compare(senha, usuario.senha)) {
-                return res.status(400).send({
-                    message: 'Senha incorreta.'
-                });
-            }
-            
-            // Crio token para autenticação
-            const authToken = await firebaseModel.criarCustomToken(usuario.id);
-
-            // Retorno token
-            return res.status(200).send({
-                authToken
-            });
-        } catch (error) {
-            return res.status(500).send({
-                message: 'Ocorreu um erro ao realizar login'
-            });
-        }
-    }
-
-    /**
-     * Realiza exclusão de um usuário
+     * Realiza exclusão de um pet
      * @param req 
      * @param res 
      */

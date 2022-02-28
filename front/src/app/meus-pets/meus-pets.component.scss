@@ -47,9 +47,26 @@
               }
             }
             
-            .descricao {
-              font-size: 16px;
-              margin-top: 5px;
+            .descricao-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .descricao {
+                font-size: 16px;
+                margin-top: 5px;
+              }
+
+              .btn-novo {
+                display: inline-flex;
+                align-items: center;
+                margin-left: 5px;
+                
+                .icone {
+                  margin-right: 5px;
+                  font-size: 13px;
+                }
+              }
             }
           } 
         }
@@ -76,25 +93,6 @@
                 height: 100%;
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
-              }
-
-              .distancia-container {
-                position: absolute;
-                left: 0;
-                width: 100%;
-                top: calc(100% - 30px);
-                height: 30px;
-                display: flex;
-                justify-content: end;
-                align-items: center;
-
-                .distancia {
-                  background-color: white;
-                  border-radius: 2px;
-                  padding: 2px 3px;
-                  font-weight: bold;
-                  margin-right: 5px;
-                }
               }
             }
 

@@ -41,12 +41,16 @@ export class MeusPetsComponent implements OnInit {
       .catch((err) => {
         this.toaster.mostrar({
           tipo: 'erro',
-          mensagem: 'Não foi possível buscar a listagem de pets!'
+          mensagem: 'Não foi possível buscar lista de pets!'
         })
       })
       .finally(() => {
         // Desativo loading
         this.loading.fechar();
       })
+  }
+
+  onBtnNovoClick(){
+
   }
 }

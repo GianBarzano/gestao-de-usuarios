@@ -1,0 +1,16 @@
+<ng-container *ngIf="mostrar">
+  <div class="modal">
+    <!-- 
+         No lugar do texto "Lorem ipsum..."
+         adicionamos o código abaixo para
+         que o usuário do componente possa
+         passar o conteúdo para dentro do 
+         modal, por exemplo:
+         <app-modal>meu conteudo</app-modal> 
+     -->
+    <ng-content></ng-content>
+  </div>
+  <div class="overlay"
+    (click)="toggle()">
+  </div>
+</ng-container>

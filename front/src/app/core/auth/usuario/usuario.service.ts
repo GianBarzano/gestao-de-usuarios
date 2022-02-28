@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import { AuthService } from '../auth.service';
-import { ETipoLogin, IDadosLogin, IDadosLoginApi, IDadosLoginCpf, IDadosLoginPis } from './classes/etipologin.enum';
+import { ETipoLogin, IDadosLogin } from './classes/etipologin.enum';
 import { IUsuarioApi } from './classes/iusuarioapi.interface';
 import { IUsuarioAtualizarApi } from './classes/iusuarioatualizarapi.interface';
 
@@ -18,21 +18,7 @@ export class UsuarioService {
    */
   logar(tipoLogin: ETipoLogin, dados: IDadosLogin): Promise<void>{
     return new Promise((resolve, reject) => {
-      // Login via api
-      if ([ETipoLogin.tlPorCpf, ETipoLogin.tlPorPis].indexOf(tipoLogin) > -1) {
-        const dadosLoginApi: IDadosLoginApi = {
-          tipo: (tipoLogin == ETipoLogin.tlPorCpf) ? 'cpf' : 'pis',
-          senha: dados.senha,
-          cpf: (<IDadosLoginCpf>dados).cpf,
-          pis: (<IDadosLoginPis>dados).pis
-        };
-
-        this.logarPorApi(dadosLoginApi).then(() => {
-          resolve();
-        }).catch((err) => {
-          reject(err);
-        })
-      } else {
+      if (tipoLogin == ETipoLogin.tlPorEmail) {
         // Logo via e-mail
         this.auth.logarViaEmailESenha(dados.email, dados.senha).then(() => {
           resolve();
@@ -60,28 +46,6 @@ export class UsuarioService {
         })
         .catch((error) => {
           rej(error?.error)
-        });
-    });
-  }
-
-  /**
-   * Realiza login via api do back-end
-   * @param dados 
-   */
-  private logarPorApi(dados: IDadosLoginApi): Promise<void>{
-    return new Promise((res, rej) => {
-      this.api.post('logar', dados)
-        .then((retorno: { authToken: string }) => {
-          // Com o token de autenticação do backend, 
-          //  logo no sistema de auth para receber token de acesso
-          this.auth.logarViaAuthToken(retorno.authToken).then(() => {
-            res();
-          }).catch((err) => {
-            rej(err);
-          })
-        })
-        .catch((error) => {
-          rej(error.error);
         });
     });
   }

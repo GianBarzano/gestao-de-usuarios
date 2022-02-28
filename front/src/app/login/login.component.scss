@@ -34,27 +34,10 @@
           .doc-login {
             margin-top: 15px;
       
-            &.por-email .titulos .login-titulo.titulo-email,
-            &.por-cpf .titulos .login-titulo.titulo-cpf,
-            &.por-pis .titulos .login-titulo.titulo-pis{
+            &.por-email .titulos .login-titulo.titulo-email{
               font-weight: 600;
             }
-      
-            &.por-email .ipt-cpf,
-            &.por-email .ipt-pis{
-              display: none !important;
-            }
-      
-            &.por-cpf .ipt-email,
-            &.por-cpf .ipt-pis{
-              display: none;
-            }
-      
-            &.por-pis .ipt-email,
-            &.por-pis .ipt-cpf{
-              display: none;
-            }
-      
+            
             .titulos {
               .login-titulo {
                 position: relative;

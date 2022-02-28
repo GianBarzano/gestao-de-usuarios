@@ -9,6 +9,7 @@ body {
   color: #333333;
   font-size: 14px;
   width: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 
   // Variaveis
   --cor-borda: #eeeeee;
@@ -141,7 +142,3 @@ body {
     }
   }
 }
-
-// Auxiliares
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

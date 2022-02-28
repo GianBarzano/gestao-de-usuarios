@@ -1,5 +1,8 @@
 {
   "host_api": "http://localhost:3333/",
+  "busca_pet_localizacao_lat": -22.900338170314836,
+  "busca_pet_localizacao_lng": -43.57896550732809,
+  "maps_key": "COLOCAR KEY DO GOOGLE MAPS",
   "firebase_api_key": "BUSCAR NO ARQUIVO DE CONFIGURACAO DO SEU APLICATIVO FIREBASE",
   "firebase_auth_domain": "BUSCAR NO ARQUIVO DE CONFIGURACAO DO SEU APLICATIVO FIREBASE",
   "firebase_project_id": "BUSCAR NO ARQUIVO DE CONFIGURACAO DO SEU APLICATIVO FIREBASE",

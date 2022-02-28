@@ -24,9 +24,6 @@ class UsuarioController {
         router.patch('/usuarios/:id', autenticacaoMiddleware, (req, res) => {
             this.alterar(req, res);
         });
-        router.post('/logar', (req, res) => {
-            this.logar(req, res);
-        });
         router.delete('/usuarios/:id', autenticacaoMiddleware, (req, res) => {
             this.excluir(req, res);
         });
@@ -97,7 +94,7 @@ class UsuarioController {
 
             // Pego dados da requisição
             let { 
-                nome, senha, senhaatual, email, cpf, pis, endereco 
+                nome, senha, senhaatual, email, endereco 
             } = req.body;
 
             // Defino variáveis de controle de alteração
@@ -222,52 +219,6 @@ class UsuarioController {
                     usuarioAlterar.email = email;
                     alterarUsuario = true;
                     alterarUsuarioFirebase = true;
-                }
-            }
-
-            // Valido CPF
-            if (cpf != null) {
-                cpf = cpf.trim();
-
-                if (cpf != usuario.cpf) {
-                    if (cpf != '' && !validarCPF(cpf)) {
-                        return res.status(400).send({
-                            message: 'CPF inválido.'
-                        });
-                    }
-    
-                    // Verifico se já existe alguém com esse CPF
-                    const usuarioCpf = await usuarioModel.buscarPorCpf(cpf);
-                    if (usuarioCpf != null && usuario.id != usuarioCpf.id) {
-                        return res.status(400).send({
-                            message: 'Já existe uma conta utilizando esse CPF.'
-                        });
-                    }
-    
-                    usuarioAlterar.cpf = cpf;
-                    alterarUsuario = true;
-                }
-            }
-
-            // Valido PIS
-            if (pis != null) {
-                if (pis != usuario.pis) {
-                    if (pis != '' && !validarPIS(pis)) {
-                        return res.status(400).send({
-                            message: 'PIS inválido.'
-                        });
-                    }
-    
-                    // Verifico se já existe alguém com esse PIS
-                    const usuarioPIS = await usuarioModel.buscarPorPis(pis);
-                    if (usuarioPIS != null && usuario.id != usuarioPIS.id) {
-                        return res.status(400).send({
-                            message: 'Já existe uma conta utilizando esse PIS.'
-                        });
-                    }
-    
-                    usuarioAlterar.pis = pis;
-                    alterarUsuario = true;
                 }
             }
 
@@ -638,91 +589,6 @@ class UsuarioController {
         } catch (error) {
             return res.status(500).send({
                 message: 'Ocorreu um erro ao cadastrar usuário'
-            });
-        }
-    }
-
-    /**
-     * Realiza login do usuário
-     * @param req 
-     * @param res 
-     */
-    public async logar(req: Request, res: Response) {
-        try {
-            // Pego dados da requisição
-            const {tipo, cpf, pis, senha} = req.body;
-            
-            let usuario: IUsuario = null;
-            
-            if (!senha) {
-                return res.status(400).send({
-                    message: 'Senha não preenchida.'
-                });
-            }
-
-            if (tipo == 'cpf') {
-                if (!cpf) {
-                    return res.status(400).send({
-                        message: 'CPF não preenchido.'
-                    });
-                }
-
-                if (!validarCPF(cpf)) {
-                    return res.status(400).send({
-                        message: 'CPF inválido.'
-                    });
-                }
-
-                usuario = await usuarioModel.buscarPorCpf(cpf);
-
-                if (!usuario) {
-                    return res.status(400).send({
-                        message: 'CPF não encontrado.'
-                    });
-                }
-            } else if (tipo == 'pis') {
-                if (!pis) {
-                    return res.status(400).send({
-                        message: 'PIS não preenchido.'
-                    });
-                }
-
-                if (!validarPIS(pis)) {
-                    return res.status(400).send({
-                        message: 'PIS inválido.'
-                    });
-                }
-
-                usuario = await usuarioModel.buscarPorPis(pis);
-
-                if (!usuario) {
-                    return res.status(400).send({
-                        message: 'PIS não encontrado.'
-                    });
-                }
-            } else {
-                return res.status(400).send({
-                    message: 'Tipo de login inválido.'
-                });
-            }
-
-            // Valido password
-            if (!await bcrypt.compare(senha, usuario.senha)) {
-                return res.status(400).send({
-                    message: 'Senha incorreta.'
-                });
-            }
-            
-            // Crio token para autenticação
-            const authToken = await firebaseModel.criarCustomToken(usuario.id);
-
-            // Retorno token
-            return res.status(200).send({
-                authToken
-            });
-        } catch (error) {
-            return res.status(500).send({
-                message: 'Ocorreu um erro ao realizar login'
             });
         }
     }

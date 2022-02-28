@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
    */
   dadosLogin: IDadosLogin = {
     email: '',
-    cpf: '',
-    pis: '',
     senha: ''
   }
 
@@ -41,37 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * Define o tipo de login da tela
-   * @param tipoLogin 
-   */
-  onTituloTipoLoginClick(tipoLogin: ETipoLogin) {
-    this.tipoLogin = tipoLogin;
-  }
-
-  /**
    * Disparado ao clicar no botão de login
    */
   onLogarClick(){
-    // Validações
-    switch (this.tipoLogin) {
-      // Login por e-mail
-      case ETipoLogin.tlPorEmail: {
-        break;
-      }
-      // Login por CPF
-      case ETipoLogin.tlPorCpf: {
-        break;
-      }
-
-      // Login por PIS
-      case ETipoLogin.tlPorPis: {
-        break;
-      }
-
-      default:
-        return;
-    }
-
     // Ativo o loading
     this.loading.mostrar({mensagem: 'Logando no sistema...'});
 
@@ -106,4 +76,4 @@ export class LoginComponent implements OnInit {
 }
 
 
-type InputChangeCampo = 'email' | 'cpf' | 'pis' | 'senha';
+type InputChangeCampo = 'email' | 'senha';

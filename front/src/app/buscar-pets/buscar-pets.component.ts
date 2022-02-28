@@ -3,6 +3,8 @@ import { MyCustomLoadingService } from '../shared/my-custom-loading/my-custom-lo
 import { MyCustomToasterService } from '../shared/my-custom-toaster/my-custom-toaster.service';
 import { EPetSexo } from './buscar-pets';
 import { BuscarPetsService } from './buscar-pets.service';
+import { BuscarPetsFiltroComponent } from './filtros/buscar-pets-filtro.component';
+import { IFiltrosBuscaPet } from './filtros/filtros';
 
 @Component({
   selector: 'app-buscar-pets',
@@ -16,11 +18,15 @@ export class BuscarPetsComponent implements OnInit {
     pages: 1
   }
   EPetSexo = EPetSexo;
+  filtros: IFiltrosBuscaPet = {
+    perdido: true
+  };
+  mostrarFiltros = false;
   
   constructor(
     private service: BuscarPetsService,
     private toaster: MyCustomToasterService,
-    private loading: MyCustomLoadingService
+    private loading: MyCustomLoadingService,
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +57,10 @@ export class BuscarPetsComponent implements OnInit {
   }
 
   onBtnFiltroClick(){
-    console.log("Btn de filtro clicado");
+    this.mostrarFiltros = true;
+  }
+
+  onModalFechou(){
+    this.mostrarFiltros = false;
   }
 }
